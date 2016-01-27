@@ -37,7 +37,7 @@ defmodule Metex.Worker do
 		"http://api.openweathermap.org/data/2.5/weather?q=#{location}"
 	end
 
-	defp parse_response({:ok, %HTTPoison.Repsonse{body:, body, status_code: 200}}) do
+	defp parse_response({:ok, %HTTPoison.Response{body: body, status_code: 200}}) do
 		body |> JSON.decode! |> compute_temperature
 	end
 
@@ -53,7 +53,7 @@ defmodule Metex.Worker do
 	defp update_stats(old_stats, location) do
 		case Map.has_key?(old_stats, location) do
 			true ->
-				Map.update!(old_stats, location	&1(&1 + 1))
+				Map.update!(old_stats, location, &(&1 + 1))
 			false ->
 				Map.put_new(old_stats, location, 1)
 		end
