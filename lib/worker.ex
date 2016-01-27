@@ -34,8 +34,10 @@ defmodule Metex.Worker do
 	end
 
 	defp url_for(location) do
-		"http://api.openweathermap.org/data/2.5/weather?q=#{location}"
+		"http://api.openweathermap.org/data/2.5/weather?q=#{location}" <> "&APPID=#{app_id}"
 	end
+
+	defp app_id, do: Application.get_env(:metex, :open_weather_app_id)
 
 	defp parse_response({:ok, %HTTPoison.Response{body: body, status_code: 200}}) do
 		body |> JSON.decode! |> compute_temperature

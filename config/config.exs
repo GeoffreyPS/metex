@@ -10,7 +10,7 @@ use Mix.Config
 
 # You can configure for your application as:
 #
-#     config :metex, key: :value
+    config :metex, open_weather_app_id: "e80a08bdd1e4a53e0d2eaf505a2bdcf6"
 #
 # And access this configuration in your application as:
 #
