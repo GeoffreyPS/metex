@@ -29,4 +29,34 @@ defmodule Metex.Worker do
 
 	## Helper Functions
 
+	defp temperature_of(location) do
+		url_for(location) |> HTTPoison.get |> parse_response
+	end
+
+	defp url_for(location) do
+		"http://api.openweathermap.org/data/2.5/weather?q=#{location}"
+	end
+
+	defp parse_response({:ok, %HTTPoison.Repsonse{body:, body, status_code: 200}}) do
+		body |> JSON.decode! |> compute_temperature
+	end
+
+	defp compute_temperature(json) do
+		try do
+			temp = (json["main"]["temp"]) - 273.15 |> Float.round
+			{:ok, temp}
+		rescue
+			_ -> :error
+		end
+	end
+
+	defp update_stats(old_stats, location) do
+		case Map.has_key?(old_stats, location) do
+			true ->
+				Map.update!(old_stats, location	&1(&1 + 1))
+			false ->
+				Map.put_new(old_stats, location, 1)
+		end
+	end
+
 end
