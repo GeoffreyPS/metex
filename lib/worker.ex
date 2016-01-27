@@ -52,6 +52,11 @@ defmodule Metex.Worker do
 		{:stop, :normal, stats}
 	end
 
+	def handle_info(msg, stats) do
+		IO.puts "Received #{inspect msg}"
+		{:noreply, stats}
+	end
+
 	def terminate(reason, stats) do
 		IO.puts "Server terminated because of #{inspect reason}"
 			inspect stats
