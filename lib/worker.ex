@@ -81,6 +81,10 @@ defmodule Metex.Worker do
 		body |> JSON.decode! |> compute_temperature
 	end
 
+	defp parse_response(_) do 
+		:error
+	end
+
 	defp compute_temperature(json) do
 		try do
 			temp = (json["main"]["temp"]) - 273.15 |> Float.round
