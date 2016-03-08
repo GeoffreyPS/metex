@@ -8,6 +8,7 @@ Follow directions to [install Elixir](http://elixir-lang.org/install.html) for y
 This might take a minute, as the entire Erlang langauge is a dependency. 
 
 ### Clone this repo into a working directory
+In the command line, navigate to a workind directory and run the command `git clone git@github.com:GeoffreyPS/metex.git`
 
 ### Fetch Dependencies
 From the command line, cd into your new directory and run `mix deps.get` to grab all of the necessary dependencies. The first time through, you may be prompted to install [Hex](https://hex.pm/), the package manager for Elixir/Erlang projects. You will need Hex to manage the dependencies.
