@@ -10,7 +10,7 @@ use Mix.Config
 
 # You can configure for your application as:
 #
-    config :metex, open_weather_app_id: "e80a08bdd1e4a53e0d2eaf505a2bdcf6"
+    config :metex, open_weather_app_id: "" #ADD API KEY HERE. GET API KEY FROM https://home.openweathermap.org/users/sign_up
 #
 # And access this configuration in your application as:
 #
