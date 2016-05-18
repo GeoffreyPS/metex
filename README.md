@@ -12,6 +12,10 @@ This might take a minute, as the entire Erlang langauge is a dependency.
 ### Fetch Dependencies
 From the command line, cd into your new directory and run `mix deps.get` to grab all of the necessary dependencies. The first time through, you may be prompted to install [Hex](https://hex.pm/), the package manager for Elixir/Erlang projects. You will need Hex to manage the dependencies.
 
+### Get API Key
+Metex uses the Open Weather Map API to fetch weather information. After this example was created, Open Weather Map required its users to register to receive an API key. [Sign up for the key](https://home.openweathermap.org/users/sign_up) and then add your key to `mix.exs`. The area should look like this:
+`config :metex, open_weather_app_id: "" #ADD API KEY HERE. GET API KEY FROM https://home.openweathermap.org/users/sign_up`
+
 ## Usage
 From the command line, run `iex -S mix` to compile the project and start the Elixir REPL. Compilation may take a few moments the first time through ([learn more about iex here](http://elixir-lang.org/docs/stable/iex/IEx.html)).
 
